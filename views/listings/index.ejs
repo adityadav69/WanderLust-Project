@@ -9,9 +9,12 @@
 
 <body>
     <h1>Listings</h1>
+    <form method="GET" action="/listings/new">
+        <button>Add new Listing</button>
+    </form>
     <ul>
         <%for(let listings of allListings){%>
-            <li>Title: <a href="listings/<%=listings.id%>"><%=listings.title%></a></li>
+            <li><a href="listings/<%=listings.id%>"><%=listings.title%></a></li>
             <%}%>
     </ul>
 </body>
