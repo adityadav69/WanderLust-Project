@@ -41,17 +41,23 @@ app.get('/listings/new',(req,res)=>{
     res.render('listings/new.ejs');
 })
 
+//Edit Route
+
 app.get('/listings/:id/edit',async(req,res)=>{
     const {id}=req.params;
     let listings=await Listing.findById(id);
     res.render('listings/edit.ejs',{listings});
 })
 
+//Update Route
+
 app.put("/listings/:id",async(req,res)=>{
     const {id}=req.params;
     await Listing.findByIdAndUpdate(id,{...req.body.listings});
     res.redirect(`/listings`);
 })
+
+//Delete Route
 
 app.delete('/listings/:id',async(req,res)=>{
     const {id}=req.params;
@@ -63,6 +69,8 @@ app.delete('/listings/:id',async(req,res)=>{
         res.send("Error while deleting list")
     })
 })
+
+// Create Route
 
 app.post('/listings',(req,res)=>{
     let l1=new Listing(req.body.listings);
@@ -77,31 +85,13 @@ app.post('/listings',(req,res)=>{
     })
 })
 
+// Read Route
+
 app.get('/listings/:id',async(req,res)=>{
     const {id}=req.params;
     let listings=await Listing.findById(id);
     res.render('listings/show.ejs',{listings})
 })
-
-// app.get('/listing/test',async(req,res)=>{
-//     const list=new Listing({
-//         title:"MY Villa",
-//         description:"This is the description of villa",
-//         price:80000,
-//         location:"Rishikesh Uttarakhand",
-//         country:"India"
-//     })
-//     await list.save()
-//     .then((result)=>{
-//         console.log("List is saved")
-//         res.send("Successfully inserted")
-//     })
-//     .catch((err)=>{
-//         console.log("List save failed")
-//         res.send("List is not saved");
-//     })
-
-// })
 
 app.listen(port,()=>{
     console.log(`App is listening on port ${port}`);
