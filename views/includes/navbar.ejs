@@ -1,0 +1,36 @@
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="/listings" class="logo"><i class="fa-solid fa-compass"></i></a>
+            <p><a href="/listings">WanderLust</a></p>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="/listings" class="nav-link">Home</a>
+            <a href="/listings" class="nav-link">All Listing</a>
+            <a href="/listings/new" class="nav-link">Add new Listing</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+        const links = document.querySelectorAll('.nav-link');
+
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+
+    
+    </script>
+
+</body>

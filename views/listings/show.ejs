@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WanderLust</title>
-</head>
-<body>
-    <h2>Details of listings</h2>
-    <ul>
-        <li><%=listings.title%></li>
-        <li><%=listings.description%></li>
-        <li><%=listings.location%></li>
-        <li><%=listings.country%></li>
-        <li><%=listings.price.toLocaleString("en-IN")%></li>
-    </ul>
-    <a href="/listings/<%=listings.id%>/edit">Edit List</a>
-    <br><br>
-    <form method="POST" action="/listings/<%=listings.id%>?_method=DELETE">
-        <button>Delete</button>
-    </form>
-</body>
-</html>
+<% layout("/layouts/boilerplate") %>
+
+<div class="details-container">
+  <div class="details-card">
+    <img src="<%= listings.image %>" alt="<%= listings.title %>" class="details-img" />
+
+    <div class="details-content">
+      <h1 class="details-title"><%= listings.title %></h1>
+      <p class="details-location"><i class="fas fa-map-marker-alt"></i> <%= listings.location %>, <%= listings.country %></p>
+      <p class="details-price">₹ <%= listings.price.toLocaleString("en-IN") %></p>
+      <p class="details-description"><%= listings.description %></p>
+
+      <div class="details-actions">
+        <a href="/listings/<%= listings.id %>/edit" class="edit-btn">✏️ Edit Listing</a>
+        <form method="POST" action="/listings/<%= listings.id %>?_method=DELETE" class="delete-form">
+          <button type="submit" class="delete-btn">🗑️ Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
